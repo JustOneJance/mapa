@@ -1,14 +1,14 @@
-import React, { Component }  from 'react';
-import { FontAwesomeIcon }     from '@fortawesome/react-fontawesome';
-import { faShareAlt }          from '@fortawesome/free-solid-svg-icons';
-import styled                  from "styled-components";
-import T                     from "prop-types";
+import React, { Component }   from 'react';
+import { FontAwesomeIcon }    from '@fortawesome/react-fontawesome';
+import { faShareAlt }         from '@fortawesome/free-solid-svg-icons';
+import styled                 from "styled-components";
+import T                      from "prop-types";
 
-import Modal                 from'../Modal';
-import IframeVeiwContainer   from './IframeVeiwContainer';
-import IframeAdvancedOptions from './IframeAdvancedOptions'
+import Modal                  from'../Modal';
+import IframeVeiwContainer    from './IframeVeiwContainer';
+import IframeOptionsContainer from './IframeOptionsContainer'
 
-import iframeBuilder         from '../../util/iframeBuilder';
+import iframeBuilder          from '../../util/iframeBuilder';
 
 class IframeWrapper extends Component {
   state = {
@@ -33,7 +33,7 @@ class IframeWrapper extends Component {
           <Modal
           title='code'
           MainModalView={IframeVeiwContainer}
-          Dropdown={IframeAdvancedOptions}
+          Dropdown={IframeOptionsContainer}
           buttonName='advanced options'
           isOpen={isShow}
           closeModal={this.handleClose}

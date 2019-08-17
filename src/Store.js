@@ -13,7 +13,8 @@ if (__STAGE__ === APP_STAGES.LOCAL) {
 
 // https://github.com/zalmoxisus/redux-devtools-extension
 const createStoreWrapper =
-  window.devToolsExtension ? window.devToolsExtension(createStore) : createStore;
+  // window.devToolsExtension ? window.devToolsExtension(createStore) : createStore;
+  createStore;
 
 const store = applyMiddleware.apply(null,middlewares)(createStoreWrapper)(reducers);
 

@@ -4,12 +4,21 @@ import styled, { css } from "styled-components";
 import i18n from "../../i18n";
 import { Formik, Form, Field } from 'formik';
 
+import iframeBuilder         from '../../util/iframeBuilder';
 import { validateHeightWidth, validateHashtag } from '../../util/validationForms';
 
 const t = (key) => i18n.t("IframeMainView.advancedOptions." + key)
 
 
 class IframeAdvancedOptions extends Component {
+
+  handleSubmit = (values) => {
+    const currentUrl = window.location.href;
+    const { hashtag, height, width } = values;
+    const widthForIframe = width ? width : '';
+    const currentIframe = iframeBuilder(currentUrl, hashtag, height, width );
+    this.props.putIframe(currentIframe);
+  }
   render() {
     return (
       <div>
@@ -20,8 +29,7 @@ class IframeAdvancedOptions extends Component {
             hashtag: '',
           }}
           onSubmit={values => {
-            // same shape as initial values
-            console.log(values);
+            this.handleSubmit(values);
           }}
         >
           {({ errors, touched }) => (
@@ -53,7 +61,6 @@ class IframeAdvancedOptions extends Component {
             </Form>
           )}
         </Formik>
-
       </div>
     );
   }

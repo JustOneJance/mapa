@@ -22,6 +22,7 @@ class IframeMainView extends Component {
   };
   render() {
     const { iframe } = this.props;
+    console.log()
     return (
       <Wrapper>
         <IframeContainer>
