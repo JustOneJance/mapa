@@ -26,20 +26,16 @@ class IframeMainView extends Component {
     return (
       <Wrapper>
         <IframeContainer>
-          <TextArea
-            className='iframeForCopy'
-            name='iframe'
-            component='textarea'
-            type='text'
-            defaultValue={iframe.code}
-          />
+          <CodeContainer contentEditable suppressContentEditableWarning>
+            {iframe.code}
+          </CodeContainer>
           <Button onClick={this.copy}>
             {t("buttonName")}
           </Button>
         </IframeContainer>
       </Wrapper>
     );
-  };
+  }
 }
 
 IframeMainView.propTypes = {
@@ -59,10 +55,13 @@ const IframeContainer = styled.div`
 
 `
 
-const TextArea = styled.textarea`
+const CodeContainer = styled.div`
   flex-grow: 1;
-  height: 30px;
+  width: 100%;
+  height: 50px;
   border: thin solid #ccc;
+  font-size: 12px;
+  word-break: break-all;
 `
 const Button = styled.button`
   color: #fff;

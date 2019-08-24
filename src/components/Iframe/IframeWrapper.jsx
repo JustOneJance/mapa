@@ -8,7 +8,10 @@ import Modal                  from'../Modal';
 import IframeVeiwContainer    from './IframeVeiwContainer';
 import IframeOptionsContainer from './IframeOptionsContainer'
 
-import iframeBuilder          from '../../util/iframeBuilder';
+import iframeBuilder         from '../../util/iframeBuilder';
+import i18n from "../../i18n";
+
+const t = (key) => i18n.t("IframeMainView." + key)
 
 class IframeWrapper extends Component {
   state = {
@@ -31,18 +34,18 @@ class IframeWrapper extends Component {
         <IframeButton icon={faShareAlt} onClick={this.handleOpen} />
         {isShow ? (
           <Modal
-          title='code'
-          MainModalView={IframeVeiwContainer}
-          Dropdown={IframeOptionsContainer}
-          buttonName='advanced options'
-          isOpen={isShow}
-          closeModal={this.handleClose}
-        />
-          ) : null}
+            title={t('title')}
+            MainModalView={IframeVeiwContainer}
+            Dropdown={IframeOptionsContainer}
+            buttonName={t('advanced')}
+            isOpen={isShow}
+            closeModal={this.handleClose}
+          />
+        ) : null}
       </div>
     )
   }  
-};
+}
   
 IframeWrapper.propTypes = {
   title: T.string,
@@ -53,9 +56,12 @@ IframeWrapper.propTypes = {
 };
 
 const IframeButton = styled(FontAwesomeIcon)`
-  width: 30px !important;
-  height: 30px;
+  width: 28px !important;
+  height: 28px;
   cursor: pointer;
-`
+  background: #fff;
+  color: black;
+  cursor: pointer;
+  `
   
 export default IframeWrapper;
